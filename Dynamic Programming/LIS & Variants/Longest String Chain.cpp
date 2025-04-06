@@ -48,6 +48,45 @@ public:
     }
 };
 
+//C++ Bottom Up code (OPTIMAL)
+class Solution {
+public:
+
+    bool isValid(string& prev, string& s){
+        int n = prev.size();
+        int m = s.size();
+        if(abs(n-m) != 1){
+            return false;
+        }
+        int i = 0, j = 0;
+        while(i < n && j < m){
+            if(prev[i] == s[j]){
+                i++;
+            }
+            j++;
+        }
+        return i == n;
+    }
+
+    int longestStrChain(vector<string>& words) {
+        int n = words.size();
+        vector<int> t(n, 1);
+        sort(words.begin(), words.end(), [&](string& a, string& b){
+            return a.size() < b.size();
+        });
+        int res = 1;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < i; j++){
+                if(isValid(words[j], words[i])){
+                    t[i] = max(t[i], t[j]+1);
+                    res = max(res, t[i]);
+                }
+            }
+        }
+        return res;
+    }
+};
+
 //Java Code
 class Solution {
 
