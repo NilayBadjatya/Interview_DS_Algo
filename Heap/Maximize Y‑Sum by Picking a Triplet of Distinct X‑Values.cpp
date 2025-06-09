@@ -47,6 +47,13 @@ Positive → means "b should come before a"
 | Java     | `pq.peek()` | Peek at the top element            |
 | Java     | `pq.poll()` | Get **and remove** the top element |
 
+| Language | Method       | Behavior                                |
+| -------- | ------------ | --------------------------------------- |
+| C++      | `pq.push()`  | Always adds the element                 |
+| Java     | `pq.offer()` | Adds element, returns `true` or `false` |
+| Java     | `pq.add()`   | Adds element, but throws on failure     |
+
+
  */
 
 class Solution {
