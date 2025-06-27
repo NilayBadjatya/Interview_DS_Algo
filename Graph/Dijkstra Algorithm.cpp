@@ -1,4 +1,5 @@
-// User Function Template
+// Time Complexity - O(E + VlogV) with priority_queue
+// if with normal queue then O(V^2)
 class Solution {
   public:
     vector<int> dijkstra(int V, vector<vector<int>> &edges, int src) {
