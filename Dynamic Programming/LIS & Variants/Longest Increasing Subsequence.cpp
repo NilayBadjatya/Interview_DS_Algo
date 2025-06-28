@@ -1,4 +1,24 @@
-//Approach 1: Recursion + Memoization
+// Most Optimal Approach
+Time Complexity - O(NLogN)
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> temp;
+        temp.push_back(nums[0]);
+        for(int i = 1; i < n; i++){
+            if(nums[i] > temp.back()){
+                temp.push_back(nums[i]);
+            }else{
+                int idx = lower_bound(temp.begin(), temp.end(), nums[i]) - temp.begin();
+                temp[idx] = nums[i];
+            }
+        }
+        return (int)temp.size();
+    }
+};
+
+//Approach 2: Recursion + Memoization
 class Solution {
 public:
     int dp[2501][2501];
@@ -25,7 +45,7 @@ public:
     }
 };
 
-//Approach 2: Bottom Up DP
+//Approach 3: Bottom Up DP
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
